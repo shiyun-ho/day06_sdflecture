@@ -13,7 +13,7 @@ public class MyRunnableImplementation implements Runnable {
         // TODO Auto-generated method stub
         for(int i = 0; i<5; i++){
             System.out.println(Thread.currentThread().getName()
-            + "\t runnable..." + i);
+            + taskName + "\t runnable..." + i);
         }
     }
     

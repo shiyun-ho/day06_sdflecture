@@ -1,5 +1,9 @@
 package sg.edu.nus.iss;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+
 public final class App {
     private App() {
     }
@@ -18,13 +22,21 @@ public final class App {
             }
        });
        thread1.start(); 
+       MyRunnableImplementation mRI = new MyRunnableImplementation("Task1");
+       MyRunnableImplementation mRI2 = new MyRunnableImplementation("Task2");
+    //    Thread thread2 = new Thread(mRI);
+    //    thread2.start();
 
-       MyRunnableImplementation mRI = new MyRunnableImplementation();
-       Thread thread2 = new Thread(mRI);
-       thread2.start();
+    //    Thread thread3 = new Thread(mRI); 
+    //    thread3.start();
 
-       Thread thread3 = new Thread(mRI); 
-       thread3.start();
+       //single thread executor 
+       ExecutorService executorService = Executors.newSingleThreadExecutor();
+       executorService.execute(mRI);
+       //executing two tasks to executo
+       executorService.execute(mRI2);
+       executorService.shutdown();
+
        }; 
       
     }
