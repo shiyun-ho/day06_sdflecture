@@ -1,5 +1,6 @@
 package sg.edu.nus.iss;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,8 +23,11 @@ public final class App {
             }
        });
        thread1.start(); 
-       MyRunnableImplementation mRI = new MyRunnableImplementation("Task1");
-       MyRunnableImplementation mRI2 = new MyRunnableImplementation("Task2");
+       MyRunnableImplementation mRI = new MyRunnableImplementation("Task 1");
+       MyRunnableImplementation mRI2 = new MyRunnableImplementation("Task 2");
+       MyRunnableImplementation mRI3 = new MyRunnableImplementation("Task 3");
+       MyRunnableImplementation mRI4 = new MyRunnableImplementation("Task 4");
+       MyRunnableImplementation mRI5 = new MyRunnableImplementation("Task 5");
     //    Thread thread2 = new Thread(mRI);
     //    thread2.start();
 
@@ -31,11 +35,27 @@ public final class App {
     //    thread3.start();
 
        //single thread executor 
-       ExecutorService executorService = Executors.newSingleThreadExecutor();
+    //    ExecutorService executorService = Executors.newSingleThreadExecutor();
+    //    executorService.execute(mRI);
+    //    //executing two tasks to executo
+    //    executorService.execute(mRI2);
+    //    executorService.shutdown();
+       
+    //    ExecutorService executorService = Executors.newFixedThreadPool(3);
+    //    executorService.execute(mRI);
+    //executing two tasks to executo
+    //    executorService.execute(mRI2);
+    //    executorService.execute(mRI3);
+    //    executorService.execute(mRI4);
+    //    executorService.execute(mRI5);
+    //    executorService.shutdown();
+
+       ExecutorService executorService = Executors.newCachedThreadPool();
        executorService.execute(mRI);
-       //executing two tasks to executo
+    // executing two tasks to executo
        executorService.execute(mRI2);
-       executorService.shutdown();
+       executorService.execute(mRI3);
+       executorService.execute(mRI4);
 
        }; 
       
